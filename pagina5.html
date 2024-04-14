@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Checkout example · Bootstrap v5.3</title>
+    <title>Happy Paws</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 
@@ -99,7 +99,7 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="css/checkout.css" rel="stylesheet">
+    <link href="css/modals.css" rel="stylesheet">
   </head>
   <body class="bg-body-tertiary">
     <svg xmlns="https://cdn.pixabay.com/photo/2023/07/30/00/12/cat-8157889_1280.png" class="d-none">
@@ -156,6 +156,26 @@
     
 <div class="container">
   <main>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">AVISO!!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Recuerde que Happy Paws no se hara cargo de los errores en el ingreso de los datos a la hora de entregar el paquete.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a href="evaluacion1.html"><button type="button" class="btn btn-primary">Continuar</button></a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="https://cdn.pixabay.com/photo/2024/04/08/21/06/cat-8684490_1280.png" alt="" width="160" height="120">
       <h2>Pago</h2>
@@ -174,32 +194,32 @@
               <h6 class="my-0">Master Cat 2[Kg]</h6>
               <small class="text-body-secondary">Alimento de mascota</small>
             </div>
-            <span class="text-body-secondary">$4.000</span>
+            <span class="text-body-secondary">$10.000</span>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
               <h6 class="my-0">Arañador</h6>
-              <small class="text-body-secondary">Ocio</small>
+              <small class="text-body-secondary">Cafe</small>
             </div>
-            <span class="text-body-secondary">$2.000</span>
+            <span class="text-body-secondary">$25.000</span>
           </li>
           <li class="list-group-item d-flex justify-content-between lh-sm">
             <div>
-              <h6 class="my-0">Shampoo para gatos</h6>
-              <small class="text-body-secondary">Higiene animal</small>
+              <h6 class="my-0">Antiparasitario para gatos</h6>
+              <small class="text-body-secondary">Salud</small>
             </div>
-            <span class="text-body-secondary">$8.000</span>
+            <span class="text-body-secondary">$12.000</span>
           </li>
           <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
             <div class="text-success">
               <h6 class="my-0">Codigo Promoción</h6>
               <small>GASTONGATUSO</small>
             </div>
-            <span class="text-success">−$1.000</span>
+            <span class="text-success">−$0.000</span>
           </li>
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (CLP)</span>
-            <strong>$13.000</strong>
+            <strong>$47.000</strong>
           </li>
         </ul>
 
@@ -218,7 +238,7 @@
               <label for="firstName" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
               <div class="invalid-feedback">
-                Valid first name is required.
+                Porfavor ingrese un nombre valido.
               </div>
             </div>
 
@@ -226,7 +246,7 @@
               <label for="lastName" class="form-label">Apellido</label>
               <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
               <div class="invalid-feedback">
-                Valid last name is required.
+                Porfavor ingrese un apellido valido.
               </div>
             </div>
             <div class="col-12">
@@ -264,7 +284,7 @@
               <label for="zip" class="form-label">Codigo Postal</label>
               <input type="text" class="form-control" id="zip" placeholder="" required>
               <div class="invalid-feedback">
-                Codigo postal no
+                Codigo postal no valido
               </div>
             </div>
           </div>
@@ -301,7 +321,7 @@
               <input type="text" class="form-control" id="cc-name" placeholder="" required>
               <small class="text-body-secondary">Nombre del dueño de la tarjeta</small>
               <div class="invalid-feedback">
-                Name on card is required
+                Nombre no valido
               </div>
             </div>
 
@@ -309,7 +329,7 @@
               <label for="cc-number" class="form-label">Numero de la tarjeta</label>
               <input type="text" class="form-control" id="cc-number" placeholder="" required>
               <div class="invalid-feedback">
-                Credit card number is required
+                Porfavor ingrese un numero de tarjeta valido
               </div>
             </div>
 
@@ -317,7 +337,7 @@
               <label for="cc-expiration" class="form-label">Fecha de expiración</label>
               <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
               <div class="invalid-feedback">
-                Expiration date required
+                Ingrese la fecha de expiración que se muestra en la tarjeta
               </div>
             </div>
 
@@ -325,17 +345,16 @@
               <label for="cc-cvv" class="form-label">CVV</label>
               <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
               <div class="invalid-feedback">
-                Security code required
+                Ingrese el cvv de 3 digitos
               </div>
             </div>
           </div>
 
           <hr class="my-4">
-
-          <button class="w-100 btn btn-primary btn-lg" type="submit">
-
-            <a class="text-white"  href="evaluacion1.html">Continuar a pago seguro</a>
-          </button>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Confirmar
+</button>
         </form>
       </div>
     </div>
