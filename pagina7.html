@@ -8,7 +8,41 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
     <title>Happy Paws</title>
+<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function()
+        {
+        $("#registrar").on("click",function()
+        {let correo = $("#email").val()
+        let password = $("#password1").val()
+        let passwordValidar =$("#passValidar").val()
 
+        if (correo=="")
+        {
+          $("#error1").fadeIn();
+          return false;
+        }
+        else
+        {
+          $("#error1").fadeOut();
+        }
+        if (password.length<7 || password.length>16){$("#error2").fadeIn();
+          return false;}
+        else{$("#error2").fadeOut()}
+        if(password!=passwordValidar)
+        {
+          $("#error3").fadeIn();
+          return false;
+        }
+        else
+        {
+          $("#error3").fadeOut();
+        }
+        
+        })
+    }
+        )
+</script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
 
     
@@ -108,6 +142,11 @@
 
       }
 
+      .error{
+        color: red;
+        display: none;
+      }
+
     </style>
 
     
@@ -131,66 +170,39 @@
       </symbol>
     </svg>
 
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-              id="bd-theme"
-              type="button"
-              aria-expanded="false"
-              data-bs-toggle="dropdown"
-              aria-label="Toggle theme (auto)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-            Light
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-            Dark
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
-            Auto
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-      </ul>
-    </div>
 
     
 <main class="form-signin w-100 m-auto">
-  <form>
+  <form id="registro">
     <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paw-print.svg/2124px-Paw-print.svg.png" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal"></h1>
+    <h1 class="h3 mb-3 fw-normal">Registro</h1>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="nombre@correo.com" required>
+    <div class="form-floating" id="">
+      <input type="email" class="form-control" id="email" placeholder="nombre@correo.com">
       <label for="floatingInput">Correo Electronico</label>
+  
     </div>
     <div class="form-floating">
-      <input type="email" class="form-control" id="Password1" placeholder="Email">
-      <label for="Password1">Confimar Contraseña</label>
+      <input type="password" class="form-control" id="password1" placeholder="contraseña">
+      <label for="Password1">Contraseña</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-      <label for="floatingPassword">Contraseña</label>
+      <input type="password" class="form-control" id="passValidar" placeholder="Password">
+      <label for="passValidar">Confirmar contraseña</label>
     </div>
     <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-      <label class="form-check-label" for="flexCheckDefault">
-        Recuerdame
+      <input class="form-check-input" type="checkbox" value="aceptarTerminos" id="checkTerminos" required>
+      <label class="form-check-label" for="checkTerminos">
+        Acepto las condiciones generales y la política de confidencialidad
       </label>
+      <ul>
+        <li id="error1" class="error">X Porfavor ingrese un correo electronico</li>
+        <li id="error2" class="error">X la contraseña debe tener 7 caracteres como minimo y 15 como maximo</li>
+        <li id="error3" class="error">X Contraseñas no coinciden</li>
+        <li id="error4" class="error"></li>
+      </ul>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Iniciar Sesion</button>
+    <button class="btn btn-primary w-100 py-2" type="submit" id="registrar" href="evaluacion1.html">Registrar</button>
     <p class="mt-5 mb-3 text-body-secondary">&copy; 2023–2024</p>
   </form>
 </main>
