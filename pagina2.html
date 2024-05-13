@@ -8,44 +8,49 @@
   <script src="jq/jquery-3.7.1.js"></script>
   <script>
     $(document).ready(function(){
-  var cartItems = 0;
-  var totalCost = 0; 
-  
-  // Función para agregar un artículo al carrito
-  function addToCart(itemName, itemPrice) {
-    cartItems++;
-    totalCost += itemPrice; 
-    updateCartIcon();
-    $("#cartItems").append("<p>" + itemName + " - $" + itemPrice.toFixed(2) + "</p>"); 
-  }
-  
-  // Función para vaciar el carrito
-  function clearCart() {
-    cartItems = 0;
-    totalCost = 0;
-    $("#cartItems").empty(); // Vaciar el contenido del carrito
-    updateCartIcon(); // Actualizar el icono del carrito
-  }
+    var cartItems = 0;
+    var totalCost = 0; 
+    
+   
+    function addToCart(itemName, itemPrice) {
+        cartItems++;
+        totalCost += itemPrice; 
+        updateCartIcon();
+        $("#cartItems").append("<p>" + itemName + " - $" + itemPrice.toFixed(2) + "</p>"); 
+    }
+    
+   
+    function clearCart() {
+        cartItems = 0;
+        totalCost = 0;
+        $("#cartItems").empty(); 
+        updateCartIcon(); 
+    }
+    
+    
+    function updateCartIcon() {
+        $("#cartIcon").text("Carro (" + cartItems + ") - $" + totalCost.toFixed(2));
+    }
+    
+   
+    $(".btn-add-to-cart").click(function(){
+        var itemName = $(this).closest(".card-body").find(".card-title").text(); 
+        var itemPrice = parseFloat($(this).data("item-price")); 
+        addToCart(itemName, itemPrice);
+    });
+    
+    $("#clearCartButton").click(function(){
+        clearCart();
+    });
 
-  // Función para actualizar el icono del carrito con la cantidad de artículos
-  function updateCartIcon() {
-    $("#cartIcon").text("Carro (" + cartItems + ") - $" + totalCost.toFixed(2));
-  }
-  
-  // Evento click para los botones "añadir al carro"
-  $(".btn-add-to-cart").click(function(){
-    var itemName = $(this).closest(".card-body").find(".card-title").text(); // Obtener el nombre del artículo
-    var itemPrice = parseFloat($(this).data("item-price")); // Obtener el precio del artículo
-    addToCart(itemName, itemPrice);
-  });
-
-  // Evento click para el botón de vaciar carrito
-  $("#clearCartButton").click(function(){
-    clearCart();
-  });
+   
+    $("#cartModal .btn-primary").click(function(){
+        if (cartItems === 0) {
+            alert("El carrito está vacío. Por favor, añade al menos un artículo antes de comprar.");
+            return false; 
+        }
+    });
 });
-
-
 
   </script>
   
@@ -324,7 +329,7 @@
     <div class="card-body">
       <h5 class="card-title">ROSTRUM PLUS OTICO</h5>
       <p class="card-text">Antibacteriano y antimicótico. Indicado en el tratamiento de otitis externa aguda o crónica en perros, causado por bacterias y hongos sensibles a Enrofloxacino y/o Sulfadiazina de Plata..</p>
-      <p><strong>Precio:</strong> $9.000 CLP</p>
+      <p><strong>Precio:</strong> $.000 CLP</p>
       <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="ROSTRUM PLUS OTICO" data-item-price="9000">añadir al carro</a>
     </div>
   </div>
