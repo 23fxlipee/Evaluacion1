@@ -8,12 +8,22 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
     <title>Happy Paws</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        function redireccion(){
+          alert("Submit exitoso");
+        }
+      })
+
+    </script>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 
     
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -95,6 +105,11 @@
       .bd-mode-toggle .dropdown-menu .active .bi {
         display: block !important;
       }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+        margin: 0;
+      }
     </style>
 
     
@@ -170,7 +185,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <a href="evaluacion1.html"><button type="button" class="btn btn-primary">Continuar</button></a>
+              <a href="evaluacion1.html"><input type="submit" class="btn btn-primary" id="formulario">Continuar</a>
               
             </div>
           </div>
@@ -183,7 +198,7 @@
     </div>
 
     <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
+      <div class="col-md-5 col-lg-4 order-md-last" hidden>
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Carro</span>
           <span class="badge bg-primary rounded-pill">3</span>
@@ -223,7 +238,7 @@
           </li>
         </ul>
 
-        <form class="card p-2">
+        <form class="card p-2" id="formulario" onsubmit="return redireccion()">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Promo code">
             <button type="submit" class="btn btn-secondary">Canjear</button>
@@ -232,7 +247,7 @@
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Datos</h4>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate action="evaluacion1.html">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Nombre</label>
@@ -282,7 +297,7 @@
 
             <div class="col-md-3">
               <label for="zip" class="form-label">Codigo Postal</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
+              <input type="number" class="form-control" id="zip" placeholder="" required>
               <div class="invalid-feedback">
                 Codigo postal no valido
               </div>
@@ -327,7 +342,7 @@
 
             <div class="col-md-6">
               <label for="cc-number" class="form-label">Numero de la tarjeta</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <input type="number" class="form-control" id="cc-number" placeholder="" required>
               <div class="invalid-feedback">
                 Porfavor ingrese un numero de tarjeta valido
               </div>
@@ -343,18 +358,15 @@
 
             <div class="col-md-3">
               <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <input type="number" class="form-control" id="cc-cvv" placeholder="" required>
               <div class="invalid-feedback">
-                Ingrese el cvv de 3 digitos
+                Ingrese el cvv
               </div>
             </div>
           </div>
 
           <hr class="my-4">
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Confirmar
-</button>
+          <input type="submit" value="Confirmar" class="btn btn-primary" id="enviar">
         </form>
       </div>
     </div>
@@ -373,3 +385,4 @@
 
     <script src="js/checkout.js"></script></body>
 </html>
+
