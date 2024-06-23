@@ -30,3 +30,12 @@ def get_registro(request):
 def get_pago(request):
 
         return render(request,'HappyPaws/pagina5.html')
+def get_cuenta(request,registro_id):
+        resultado = Registro.objects.get(id=registro_id)
+        contexto = {"Cuenta":resultado}
+        return render(request,'HappyPaws/cuenta.html',contexto)
+def delete_registro(request,registro_id):
+        registro = Registro.objects.get(id=registro_id)
+        registro.delete()
+        return redirect('/HappyPaws/inicio')
+

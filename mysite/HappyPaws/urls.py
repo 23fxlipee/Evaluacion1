@@ -9,4 +9,7 @@ urlpatterns = [
     path("registro", views.get_registro, name="registro"),
     path("login", views.get_login, name="login"),
     path("pago", views.get_pago, name="pago"),
+    path("cuenta/<int:registro_id>", views.get_cuenta, name="cuenta"),
+    path("cuenta/eliminar/<int:registro_id>/", views.delete_registro, name="borrar_registro"),
+
 ]
