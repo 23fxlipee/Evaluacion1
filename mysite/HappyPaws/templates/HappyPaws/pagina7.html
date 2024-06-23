@@ -152,7 +152,6 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="C:\Users\leito\Desktop\buenas tardes\bootstrap-5.3.3-examples\bootstrap-5.3.3-examples\sign-in\sign-in.css" rel="stylesheet">
   </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary, bd-img-fondo" > 
 <main class="form-signin w-100 m-auto">
@@ -166,25 +165,26 @@
   <div class="row">
     <div class="col"></div>
     <div class="col , bg-light">
-  <form id="registro" action="inicio">
+  <form id="registro" method="post">
+    {% csrf_token %}
     <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Paw-print.svg/2124px-Paw-print.svg.png" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Registro</h1>
 
     <div class="form-floating" id="">
-      <input type="email" class="form-control" id="email" placeholder="nombre@correo.com">
+      <input type="email" class="form-control" id="email" placeholder="nombre@correo.com" name="email">
       <label for="floatingInput">Correo Electronico</label>
   
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="password1" placeholder="contraseña">
+      <input type="password" class="form-control" id="password1" placeholder="contraseña" name="password1">
       <label for="Password1">Contraseña</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="passValidar" placeholder="Password">
+      <input type="password" class="form-control" id="passValidar" placeholder="Password" name="passValidar">
       <label for="passValidar">Confirmar contraseña</label>
     </div>
     <div class="form-check text-start my-3">
-      <input class="form-check-input" type="checkbox" value="aceptarTerminos" id="checkTerminos" required>
+      <input class="form-check-input" type="checkbox" value="aceptarTerminos" id="checkTerminos" required name="checkTerminos">
       <label class="form-check-label" for="checkTerminos">
         Acepto las condiciones generales y la política de confidencialidad
       </label>
@@ -195,7 +195,7 @@
         <li id="error4" class="error"></li>
       </ul>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit" id="registrar" href="inicio">Registrar</button>
+    <button class="btn btn-primary w-100 py-2" type="submit" id="registrar">Registrar</button>
     <p class="mt-5 mb-3 text-body-secondary">&copy; 2023–2024</p>
   </div>
   <div class="col"></div>
