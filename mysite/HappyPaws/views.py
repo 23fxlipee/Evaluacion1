@@ -36,11 +36,25 @@ def get_cuenta(request,registro_id):
 def delete_registro(request,registro_id):
         registro = Registro.objects.get(id=registro_id)
         registro.delete()
-        return redirect('/HappyPaws/inicio')
+        return redirect('http://localhost:8000/HappyPaws/cuenta/admin')
 
 @login_required
 def get_lista_cuentas(request):
         listado = Registro.objects.all()
         contexto = {"cuenta":listado}
         return render(request,'HappyPaws/registrocuentas.html',contexto)
+def update_cuenta(request,registro_id):
+        if request.method =='GET':
+                resultado = Registro.objects.get(id=registro_id)
+                contexto = {"cuenta":resultado}
+                return render(request,'HappyPaws/editarcuenta.html',contexto)
+        elif request.method =='POST':
+                resultado = Registro.objects.get(id=registro_id)
+                correo = request.POST['txtcorreo']
+                password = request.POST['txtpassword']
+                resultado.correo = correo
+                resultado.password = password
+                resultado.save()
+                return redirect('cuentas')
+
 

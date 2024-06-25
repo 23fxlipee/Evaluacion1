@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <button><a href="http://localhost:8000/HappyPaws/inicio"  style="color: #000;text-decoration: none;">Volver</a></button>
     {% if cuenta %}
     <table border="1">
         <tr>
@@ -16,8 +17,9 @@
         <tr>
             <td> {{ c.correo }} </td>
             <td> {{ c.password }} </td>
-            <td> <a href="">Detalle</a> </td>
-            <td> <a href="">Eliminar</a> </td>
+            <td> <a href="http://localhost:8000/HappyPaws/cuenta/{{c.id}}">Detalle</a></td>
+            <td> <a href="http://localhost:8000/HappyPaws/cuenta/eliminar/{{c.id}}">Eliminar</a> </td>
+            <td><a href="http://localhost:8000/HappyPaws/cuenta/editar/{{c.id}}">Editar</a></td>
         </tr>
         {% endfor %}
     </table>        

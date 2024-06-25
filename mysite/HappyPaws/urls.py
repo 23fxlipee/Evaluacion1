@@ -10,6 +10,6 @@ urlpatterns = [
     path("pago", views.get_pago, name="pago"),
     path("cuenta/<int:registro_id>", views.get_cuenta, name="cuenta"),
     path("cuenta/eliminar/<int:registro_id>/", views.delete_registro, name="borrar_registro"),
-    path("cuenta/admin", views.get_lista_cuentas,name="cuentas")
-
-]
+    path("cuenta/admin", views.get_lista_cuentas,name="cuentas"),
+    path("cuenta/editar/<int:registro_id>", views.update_cuenta , name="editar_cuenta")
+    ]
