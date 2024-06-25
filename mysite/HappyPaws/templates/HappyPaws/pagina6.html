@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Happy Paws</title>
+  <link rel="shortcut icon" href="https://static.wixstatic.com/media/f10c89_64f7a620c8a04cf3971b6e654c9f8de2~mv2.png" >
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+    var cartItems = 0;
+    var totalCost = 0; 
+    
+   
+    function addToCart(itemName, itemPrice) {
+        cartItems++;
+        totalCost += itemPrice; 
+        updateCartIcon();
+        $("#cartItems").append("<p>" + itemName + " - $" + itemPrice.toFixed(2) + "</p>"); 
+    }
+    
+   
+    function clearCart() {
+        cartItems = 0;
+        totalCost = 0;
+        $("#cartItems").empty(); 
+        updateCartIcon(); 
+    }
+    
+    
+    function updateCartIcon() {
+        $("#cartIcon").text("Carro (" + cartItems + ") - $" + totalCost.toFixed(2));
+    }
+    
+   
+    $(".btn-add-to-cart").click(function(){
+        var itemName = $(this).closest(".card-body").find(".card-title").text(); 
+        var itemPrice = parseFloat($(this).data("item-price")); 
+        addToCart(itemName, itemPrice);
+    });
+    
+    $("#clearCartButton").click(function(){
+        clearCart();
+    });
+
+   
+    $("#cartModal .btn-primary").click(function(){
+        if (cartItems === 0) {
+            alert("El carrito está vacío. Por favor, añade al menos un artículo antes de comprar.");
+            return false; 
+        }
+    });
+});
+
+  </script>
+  <style>
+    .card-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+  
+    .card {
+      width: 18rem;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header data-bs-theme="dark">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Happy Paws</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="registro">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">...</a>
+          </li>
+        </ul>
+        <button class="btn btn-primary" id="cartButton" data-bs-toggle="modal" data-bs-target="#cartModal">
+          <span id="cartIcon">Carro (0)</span>
+        </button>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">Carrito de Compras</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="cartItems">
+     
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" id="clearCartButton" class="btn btn-danger">Vaciar Carrito</button>
+        <a href="pago"><button type="button" class="btn btn-primary">Comprar</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<img alt="Gatos" src="https://www.superzoo.cl/on/demandware.static/-/Library-Sites-SuperZooSharedLibrary/default/dwd4b2aaf3/SuperZoo/categorias/BANNER-CATEGORIA-GATO.jpg" style="width:100%;" title="Gatos">
+<div class="card-container">
+  <div class="card">
+    <img src="https://dojiw2m9tvv09.cloudfront.net/66271/product/whiskas-gatito-carne-y-leche-10kg7136.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">WHISKAS GATITOS</h5>
+      <p class="card-text">Alimento para gatitos, sabor carne y leche 10KG, para 2 a 12 meses.</p>
+  <p><strong>Precio:</strong> $29.200 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="WHISKAS GATITO 10KG" data-item-price="29200">añadir al carro</a> 
+   
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://cdnx.jumpseller.com/distribuidora-mdr/image/28335192/thumb/610/610?1665455968" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">WHISKAS ADULTO</h5>
+      <p class="card-text">Alimento para Gatos sabor a pescado 10KG, para +1 año.</p>
+      <p><strong>Precio:</strong> $29.200 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="WHISKAS ADULTO" data-item-price="29200">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://www.whiskas.cl/sites/g/files/fnmzdf4541/files/2023-11/7797453000420-product-image-1.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">WHISKAS SOBRE</h5>
+      <p class="card-text">Sobre de gato sabor carne en salsa.</p>
+      <p><strong>Precio:</strong> $830 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="WHISKAS SOBRE" data-item-price="830">añadir al carro</a>
+    </div>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="card">
+    <img src="https://dojiw2m9tvv09.cloudfront.net/11787/product/mastercatgatitos7296.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">MASTER CAT GATITOS</h5>
+      <p class="card-text">Alimento para gatitos, sabor carne y leche 3KG.</p>
+      <p><strong>Precio:</strong> $14.000CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="MASTER CAT GATITOS 3KG" data-item-price="14000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://www.mastercat.cl/wp-content/uploads/2021/04/1505266-MCAT-SALMON-3KG.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">MASTER CAT ADULTO</h5>
+      <p class="card-text">Alimento de gato adulto, sabor salmon 3KG.</p>
+      <p><strong>Precio:</strong> $11.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="MASTER CAT ADULTO 3KG" data-item-price="11000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://www.mastercat.cl/wp-content/uploads/2021/04/trocitos-adultos-carne.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">SOBRE MASTER CAT </h5>
+      <p class="card-text">Sobre para gatos alduto, sabor a carne</p>
+      <p><strong>Precio:</strong> $1.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="MASTER CAT SOBRE" data-item-price="1000">añadir al carro</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+<h1 class="page-title">Juguetes & Acessorios</h1>
+
+
+<img alt="Juguetes gato" src="https://www.superzoo.cl/on/demandware.static/-/Library-Sites-SuperZooSharedLibrary/default/dwe410a91a/SuperZoo/categorias/categorias-desktop/gato-juguetes.jpg" style="width:100%;" title="Juguetes gato">
+<div class="card-container">
+  <div class="card">
+    <img src="https://omydog.cl/wp-content/uploads/2021/11/Copia-de-Omydog-37.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">JUGUETE DE RATON PARA GATOS</h5>
+      <p class="card-text">""¡Diversión garantizada para tu felino favorito! Este juguete de ratón para gatos es el pasatiempo perfecto para mantener a tu peludo amigo entretenido durante horas. Con su diseño realista y materiales duraderos, tu gato podrá perseguir, saltar y jugar como si estuviera cazando presas en la naturaleza. ¡Haz que la vida de tu gatito sea aún más emocionante con este juguete irresistible!""</p>
+      <p><strong>Precio:</strong> $3.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="JUGUETE DE RATON" data-item-price="3000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://www.animal-lovers.cl/wp-content/uploads/2023/09/set-de-juguetes-para-gatos-5-1-600x600.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">TUNEL PLEGABLE PARA GATOS</h5>
+      <p class="card-text">"¡Exploración y diversión sin límites para tu gatito! Este túnel plegable es el accesorio ideal para satisfacer su instinto aventurero. Con su diseño portátil y fácil de guardar, podrás llevar la emoción a cualquier parte. Además, su construcción resistente garantiza horas de entretenimiento seguro para tu peludo amigo. ¡Dale a tu gato un mundo de posibilidades con este túnel que despierta su curiosidad y le ofrece horas de diversión!"</p>
+      <p><strong>Precio:</strong> $4.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="TUNEL PLEGABLE" data-item-price="4000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://www.animal-lovers.cl/wp-content/uploads/2023/09/plato-elevado-gato-1-1-600x600.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PELOTA RASCADOR PARA GATOS</h5>
+      <p class="card-text">"¡Diviértete y cuida las garras de tu gato al mismo tiempo con nuestra pelota rascadora! Hecha con materiales duraderos y resistentes, esta pelota proporciona una superficie ideal para que tu felino afile sus garras de forma segura. Además, su diseño de pelota la hace perfecta para juegos interactivos, manteniendo a tu gato activo y entretenido. ¡Convierte el rascado en diversión con esta pelota rascadora que tu gato adorará!"</p>
+      <p><strong>Precio:</strong> $2.500 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="PELOTA RASCADOR" data-item-price="2500">añadir al carro</a>
+    </div>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="card">
+    <img src="https://www.animal-lovers.cl/wp-content/uploads/2023/09/plato-elevado-gato-1-1-600x600.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">PLATO ELEVADO PARA GATOS</h5>
+      <p class="card-text">"¡Una experiencia de alimentación superior para tu minino consentido! Nuestro plato elevado para gatos 'Cabeza de Gato' no solo es a prueba de fugas, sino que también ofrece un diseño ergonómico pensado especialmente para las necesidades de tu gato. Con un fondo antideslizante que mantiene los cuencos de comida en su lugar y un borde oblicuo que reduce la caída de comida, este plato es perfecto para gatos de cara plana. Además, su parte inferior curva asegura una experiencia de alimentación cómoda y sin dolor. ¡Dale a tu gato el lujo que se merece con nuestro plato elevado 'Cabeza de Gato'!""
+
+
+
+
+
+        .</p>
+        <p><strong>Precio:</strong> $9.000 CLP</p>
+        <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="PLATO ELEVADO GATO" data-item-price="9000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://www.shoppingchina.com.py/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbTNPIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fd41de8b259df118b56d8263b115779aa925bc55/564591.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">ARAÑADOR</h5>
+      <p class="card-text">"¡Dale a tu gato la oportunidad de afilar sus garras y estirarse con nuestro arañador! Con un diseño resistente y materiales duraderos, este arañador es perfecto para satisfacer los instintos naturales de tu felino sin dañar tus muebles. Además, su tamaño compacto lo hace ideal para cualquier espacio. ¡Proporciona a tu gato un lugar propio para rascar y mantener sus garras en óptimas condiciones con nuestro arañador!".</p>
+      <p><strong>Precio:</strong> $13.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="ARAÑADOR" data-item-price="13000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://http2.mlstatic.com/D_NQ_NP_938921-MLU75358790021_032024-O.webp" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">CAMA PARA GATOS</h5>
+      <p class="card-text">"¡Haz que tu gato se sienta como un rey con nuestra lujosa cama para gatos! Con un diseño acogedor y materiales suaves y cómodos, esta cama proporciona el lugar perfecto para que tu felino se relaje y descanse. Su tamaño espacioso garantiza comodidad para gatos de todas las razas y tamaños. Además, su estilo elegante complementará la decoración de tu hogar. ¡Regálale a tu gato el descanso que se merece con nuestra cama para gatos!"</p>
+      <p><strong>Precio:</strong> $12.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="CAMA PARA GATOS" data-item-price="12000">añadir al carro</a>
+    </div>
+  </div>
+</div>
+
+<h1 class="page-title">Farmacia</h1>
+<img alt="Farmacia Gato" src="https://www.superzoo.cl/on/demandware.static/-/Library-Sites-SuperZooSharedLibrary/default/dw0e86328b/SuperZoo/categorias/categorias-desktop/gato-farmacia.jpg" style="width:100%;" title="Farmacia Gato">
+
+<div class="card-container">
+  <div class="card">
+    <img src="https://cdnx.jumpseller.com/family-pets/image/27545629/resize/540/540?1664212378" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">ANTIPARASITARIO INTERNO DE GATOS</h5>
+      <p class="card-text">Broadline es un antiparasitario interno y externo destinado para el control y tratamiento de infestaciones parasitarias en felinos.</p>
+      <p><strong>Precio:</strong> $5.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="ANTIPARASITARIO" data-item-price="5000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://puntomascotas.cl/11232-medium_default/kitty-aid-ferrocat-60-ml.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">KITTY AID FERROCAT</h5>
+      <p class="card-text">Suplemento con hierro para gatos con anemia y/o deficiencias nutricionales.</p>
+      <p><strong>Precio:</strong> $4.500 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="KITTY AID FERROCAT" data-item-price="4500">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://centralvet01.akamaized.net/4678/laveta-taurina-suplemento-vitaminico-para-gatos.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">LAVETA TAURINA</h5>
+      <p class="card-text">Suplemento vitamínico para gatos con deficiencias nutricionales</p>
+      <p><strong>Precio:</strong> $5.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="LAVETA TAURINA" data-item-price="5000">añadir al carro</a>
+    </div>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="card">
+    <img src="https://felinus.cl/974-large_default/superpet-omega-gato.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Superpet gato omega 3-6 125 ML</h5>
+      <p class="card-text"> es un suplemento para gatos a base de aceites de origen natural y vitamina E, especialmente formulada para la mantención de la salud de su gato.
+  </p>
+  <p><strong>Precio:</strong> $5.000 CLP</p>
+  <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="SUPERPET GATO" data-item-price="5000">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://felinus.cl/976-medium_default/apeticat-suplemento-vitaminico-jarabe.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">APETICAT</h5>
+      <p class="card-text">suplemento para gatos formulado a base de Taurina y Carnitina, complementado con aminoácidos, vitaminas y Calcio. Su fórmula aumenta las ganas de comer de su mascota.</p>
+      <p><strong>Precio:</strong> $4.700 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="APETICAT" data-item-price="4700">añadir al carro</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://chemiesa.com/wp-content/uploads/2018/01/Sucravet-600x600.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">SUCRAVET</h5>
+      <p class="card-text"> antiácido, antiulceroso y protector gástrico en suspensión oral para gatos.</p>
+      <p><strong>Precio:</strong> $5.000 CLP</p>
+      <a href="#" class="btn btn-primary btn-add-to-cart" data-item-name="SUCRAVET" data-item-price="5000">añadir al carro</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
