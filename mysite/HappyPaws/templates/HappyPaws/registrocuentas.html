@@ -3,26 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gestión de Cuentas - Happy Paws</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .table thead th {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .table td, .table th {
+            vertical-align: middle;
+        }
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <button><a href="http://localhost:8000/HappyPaws/inicio"  style="color: #000;text-decoration: none;">Volver</a></button>
-    {% if cuenta %}
-    <table border="1">
-        <tr>
-            <th>Mail</th>
-            <th>Password</th>
-        </tr>
-        {% for c in cuenta %}
-        <tr>
-            <td> {{ c.correo }} </td>
-            <td> {{ c.password }} </td>
-            <td> <a href="http://localhost:8000/HappyPaws/cuenta/{{c.id}}">Detalle</a></td>
-            <td> <a href="http://localhost:8000/HappyPaws/cuenta/eliminar/{{c.id}}">Eliminar</a> </td>
-            <td><a href="http://localhost:8000/HappyPaws/cuenta/editar/{{c.id}}">Editar</a></td>
-        </tr>
-        {% endfor %}
-    </table>        
-{% endif %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Happy Paws</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:8000/HappyPaws/inicio">Inicio</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Gestión de Cuentas</h2>
+        {% if cuenta %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Mail</th>
+                        <th>Password</th>
+                        <th>Detalle</th>
+                        <th>Eliminar</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in cuenta %}
+                    <tr>
+                        <td>{{ c.correo }}</td>
+                        <td>{{ c.password }}</td>
+                        <td><a href="http://localhost:8000/HappyPaws/cuenta/{{c.id}}" class="btn btn-info btn-sm">Detalle</a></td>
+                        <td><a href="http://localhost:8000/HappyPaws/cuenta/eliminar/{{c.id}}" class="btn btn-danger btn-sm">Eliminar</a></td>
+                        <td><a href="http://localhost:8000/HappyPaws/cuenta/editar/{{c.id}}" class="btn btn-warning btn-sm">Editar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info" role="alert">
+            No hay cuentas registradas.
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Happy Paws. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
